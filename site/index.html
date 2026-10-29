@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Sherwood — Restaurant, Catering & Banquet Hall · Brantford</title>
+<meta name="description" content="The Sherwood Restaurant — family-owned Brantford landmark since 1961. Home-style breakfast, lunch & dinner, Olde-English buffets, banquet hall & catering up to 2,000. 799 Colborne St E · (519) 756-5484." />
+<meta property="og:title" content="The Sherwood — Since 1961 · Brantford" />
+<meta property="og:description" content="Six decades of family dining, buffets, banquets & catering. 799 Colborne St E, Brantford." />
+<meta property="og:image" content="assets/dining.jpg" />
+<meta name="theme-color" content="#12140f" />
+<link rel="icon" href="assets/logo-md.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#f3efe6; --ink:#191711; --night:#12140f; --green:#2e5d46; --gold:#b98a2f;
+    --muted:#8f887b; --hair:rgba(25,23,17,.16); --hair2:rgba(243,239,230,.16);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:"Inter",sans-serif;-webkit-font-smoothing:antialiased}
+  ::selection{background:var(--green);color:var(--paper)}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .serif{font-family:"Cormorant Garamond",serif}
+
+  #preload{position:fixed;inset:0;background:var(--night);z-index:99;display:flex;align-items:center;justify-content:center}
+  #preload img{width:230px;animation:prepulse 1.3s ease forwards}
+  @keyframes prepulse{0%{opacity:0;transform:scale(.72)}55%{opacity:1;transform:scale(1)}100%{opacity:1}}
+
+  header{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.2rem,6vw,5rem);height:88px;background:rgba(18,20,15,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--hair2);transform:translateY(-100%);transition:transform .65s ease}
+  header.on{transform:none}
+  .brand{display:flex;align-items:center;gap:1rem}
+  .brand img{height:34px;width:auto}
+  .brand .mark{font:600 10.5px/1 "Inter";letter-spacing:.4em;text-transform:uppercase;color:rgba(243,239,230,.6)}
+  nav ul{display:flex;gap:2.2rem;list-style:none}
+  nav a{font:500 11.5px/1 "Inter";letter-spacing:.2em;text-transform:uppercase;color:rgba(243,239,230,.9);transition:color .25s;position:relative}
+  nav a:hover{color:#f3efe6}
+  nav a::after{content:"";position:absolute;left:0;right:100%;bottom:-5px;height:1px;background:var(--gold);transition:right .3s}
+  nav a:hover::after{right:0}
+  .reserve{font:600 11px/1 "Inter";letter-spacing:.26em;text-transform:uppercase;color:#f3efe6;padding:.62rem 1.1rem;border:1px solid rgba(185,138,47,.75);border-radius:999px;background:transparent;transition:background .3s,color .3s}
+  .reserve:hover{background:var(--gold);color:#12140f}
+
+  .hero{position:relative;min-height:100vh;overflow:hidden;background:var(--night)}
+  .hero .bg{position:absolute;inset:-14% 0;background:url("assets/dining.jpg") center/cover no-repeat}
+  .hero .shade{position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 16%, rgba(18,20,15,.36), rgba(18,20,15,.78) 82%),linear-gradient(180deg,rgba(18,20,15,.58),transparent 44%,rgba(18,20,15,.7) 100%)}
+  .hero .topline{position:absolute;top:150px;left:0;right:0;text-align:center;font:500 11px/1 "Inter";letter-spacing:.42em;text-transform:uppercase;color:rgba(243,239,230,.78);opacity:0;transform:translateY(20px);transition:all .9s ease .25s}
+  .hero .topline::before,.hero .topline::after{content:"—";color:var(--gold);margin:0 1.6rem}
+  .hero h1{position:absolute;top:34%;left:0;right:0;text-align:center;font-family:"Cormorant Garamond",serif;font-weight:500;font-size:clamp(56px,7.6vw,110px);line-height:.96;letter-spacing:-.025em;color:#f3efe6;opacity:0;transform:translateY(26px);transition:all 1.05s ease .5s}
+  .hero h1 em{font-style:italic;color:rgba(200,162,74,.95)}
+  .hero .sub{position:absolute;top:61%;left:0;right:0;max-width:560px;margin:0 auto;text-align:center;font:400 15px/1.75 "Inter";color:rgba(243,239,230,.8);opacity:0;transform:translateY(18px);transition:all 1s ease .75s}
+  .hero .acts{position:absolute;top:72%;left:0;right:0;display:flex;gap:1.1rem;justify-content:center;opacity:0;transform:translateY(14px);transition:all .9s ease .95s}
+  .hero .acts a{border:1px solid rgba(243,239,230,.55);border-radius:999px;padding:.62rem 1.5rem;font:600 11.5px/1 "Inter";letter-spacing:.24em;text-transform:uppercase;color:#f3efe6;transition:all .25s}
+  .hero .acts a:first-child{background:var(--gold);border-color:transparent;color:#12140f}
+  .hero .acts a:hover{transform:translateY(-1px)}
+  .hero .stats{position:absolute;bottom:34px;left:0;right:0;display:flex;gap:3.4rem;justify-content:center;align-items:baseline;opacity:0;transition:opacity 1s ease 1.2s}
+  .hero .stats .st{text-align:center}
+  .hero .stats .st b{display:block;font-family:"Cormorant Garamond",serif;font-size:26px;color:#f3efe6}
+  .hero .stats .st span{display:block;font:500 10.5px/1.5 "Inter";letter-spacing:.2em;text-transform:uppercase;color:rgba(243,239,230,.55);margin-top:.1rem}
+  .hint{position:absolute;right:40px;bottom:30px;width:26px;height:40px;border:1.5px solid rgba(243,239,230,.4);border-radius:13px;opacity:0;transition:opacity .8s ease 1.35s}
+  .hint::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:7px;background:var(--gold);border-radius:2px;transform:translateX(-50%);animation:hintm 1.4s ease infinite}
+  @keyframes hintm{0%{top:7px}100%{top:23px}}
+
+  section{padding:clamp(2rem,8vw,5.5rem)}
+  .eyebrow{display:flex;align-items:center;gap:1.2rem;font:600 11px/1 "Inter";letter-spacing:.4em;text-transform:uppercase;color:var(--muted)}
+  .eyebrow .num{font-family:"Cormorant Garamond",serif;font-size:15px;color:var(--green);letter-spacing:.08em}
+  .eyebrow::after{content:"";flex:1;height:1px;background:var(--hair)}
+  .sec-title{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:clamp(30px,3.6vw,52px);line-height:1.05;letter-spacing:-.015em;color:var(--ink);margin-top:1.4rem}
+  .prose{max-width:680px;margin:1.6rem 0}
+  .prose p{font:400 15.5px/1.85 "Inter";color:rgba(25,23,17,.82)}
+
+  .heritage{display:grid;grid-template-columns:1fr 1fr;gap:4.6rem;align-items:center;padding:10.5rem 0 8rem}
+  .heritage .pic{position:relative}
+  .heritage .pic img{border-radius:2px;box-shadow:0 30px 70px rgba(25,23,17,.22)}
+  .heritage .pic .stamp{position:absolute;left:68%;top:-8%;width:36%;background:var(--paper);border:1px solid var(--hair);border-radius:50%;aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:1rem}
+  .heritage .pic .stamp b{font-family:"Cormorant Garamond",serif;font-size:34px;color:var(--green);line-height:1}
+  .heritage .pic .stamp span{font:600 9px/1.6 "Inter";letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
+  .heritage .lead{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:22px;line-height:1.5;color:var(--ink);margin-bottom:1.6rem}
+
+  .menu-list{max-width:820px;margin:3.2rem 0 0;border-top:2px solid var(--ink)}
+  .mitem{border-bottom:1px solid var(--hair);padding:1.45rem 1.2rem;display:grid;grid-template-columns:auto 1fr auto;gap:0 1.2rem;align-items:baseline;transition:background .3s}
+  .mitem:hover{background:rgba(46,93,70,.06)}
+  .mitem .no{font-family:"Cormorant Garamond",serif;font-size:13px;color:var(--muted)}
+  .mitem .nm{font-family:"Cormorant Garamond",serif;font-size:27px;font-weight:600;letter-spacing:-.01em;color:var(--ink)}
+  .mitem .d{grid-column:2/3;font:400 12.5px/1.5 "Inter";color:var(--muted);margin-top:.15rem}
+  .mitem .pr{font-family:"Cormorant Garamond",serif;font-size:19px;color:var(--green)}
+  .mitem .tag{font:500 9.5px/1 "Inter";letter-spacing:.18em;text-transform:uppercase;color:var(--muted);grid-column:2/3;margin-top:.2rem}
+  .menu-note{max-width:680px;margin:2.4rem 0 0;font:400 13px/1.7 "Inter";color:var(--muted)}
+
+  .gal{column-count:4;column-gap:1rem;margin:3rem 0 0}
+  .gal figure{border-radius:2px;overflow:hidden;margin:0 0 1rem;break-inside:avoid;cursor:zoom-in;position:relative}
+  .gal figure img{width:100%;transition:transform 1s ease;filter:saturate(.96)}
+  .gal figure:hover img{transform:scale(1.055)}
+  .gal figcaption{position:absolute;left:0;bottom:0;width:100%;background:var(--paper);padding:.55rem .7rem;font:500 9.5px/1 "Inter";letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+
+  .reviews{padding:9.5rem 0 6rem}
+  .rev-stats{display:flex;gap:2.6rem;align-items:baseline;margin-top:1.6rem}
+  .rev-stats .big{font-family:"Cormorant Garamond",serif;font-size:64px;color:var(--ink);line-height:1}
+  .rev-stats .big span{font-size:28px;color:var(--muted)}
+  .rev-stats .cap{font:500 11.5px/1.6 "Inter";letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  .qrow{max-width:960px;margin:4rem 0 0;border-top:2px solid var(--ink)}
+  blockquote{border-bottom:1px solid var(--hair);padding:2rem 1.4rem;display:grid;grid-template-columns:1fr auto;gap:0 1.6rem;align-items:baseline}
+  blockquote p{font-family:"Cormorant Garamond",serif;font-size:19px;line-height:1.55;color:var(--ink)}
+  blockquote p::before{content:"“"}
+  blockquote p::after{content:"”"}
+  blockquote .who{font:500 11px/1.6 "Inter";letter-spacing:.18em;text-transform:uppercase;color:var(--muted);text-align:right;line-height:1.8}
+  blockquote .who b{display:block;color:var(--ink);letter-spacing:.1em}
+  blockquote .who i{color:var(--gold);letter-spacing:.16em;font-style:normal}
+  .rev-foot{margin:2.6rem 0 0;display:flex;gap:1.4rem;align-items:center;flex-wrap:wrap}
+  .rev-foot .gg{border:1px solid var(--green);border-radius:999px;padding:.5rem 1.2rem;font:600 10.5px/1 "Inter";letter-spacing:.22em;text-transform:uppercase;color:var(--green)}
+
+  .visit{display:grid;grid-template-columns:1fr 1fr;gap:4.4rem;align-items:start;margin-top:2.4rem}
+  .vtitle{font-family:"Cormorant Garamond",serif;font-size:23px;font-weight:600;margin-bottom:1.1rem}
+  .vbody{font:400 14.5px/1.9 "Inter";color:rgba(25,23,17,.85)}
+  .vbody a{color:var(--green);border-bottom:1px solid rgba(46,93,70,.35)}
+  .hours{list-style:none;border-top:1px solid var(--hair);margin:.6rem 0 0}
+  .hours li{display:flex;justify-content:space-between;border-bottom:1px solid var(--hair);padding:.62rem 1rem;font:400 13.5px/1 "Inter";color:var(--ink)}
+  .hours li span{color:var(--muted)}
+  .mapwrap{position:relative;padding-top:72%;border:1px solid var(--hair);border-radius:2px;background:var(--paper)}
+  .mapwrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(.85) invert(.9) contrast(.9)}
+
+  footer{background:var(--night);color:rgba(243,239,230,.92);padding:3rem 0 2.2rem;margin-top:2rem}
+  footer .inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.6rem}
+  footer .inner img{height:34px;width:auto}
+  footer .soc a{font:500 11px/1 "Inter";letter-spacing:.3em;text-transform:uppercase;color:rgba(243,239,230,.7);margin-right:1.1rem;transition:color .25s}
+  footer .soc a:hover{color:#f3efe6}
+  footer .legal{font:400 10.5px/1.7 "Inter";letter-spacing:.08em;color:rgba(243,239,230,.45);margin-top:1.4rem}
+  footer .legal span{color:var(--gold)}
+
+  #lb{position:fixed;inset:0;background:rgba(18,20,15,.94);z-index:98;display:none;align-items:center;justify-content:center}
+  #lb img{max-height:90vh;max-width:92vw;box-shadow:0 30px 90px rgba(0,0,0,.6)}
+  #lb .x{position:fixed;top:26px;right:34px;color:#f3efe6;font-size:28px;cursor:pointer;z-index:99}
+
+  [data-rv]{opacity:0;transform:translateY(22px);transition:opacity .85s ease,transform .85s ease}
+  [data-rv].in{opacity:1;transform:none}
+  [data-rv-l]{opacity:0;transform:translateX(-26px);transition:all .9s ease}
+  [data-rv-l].in{opacity:1;transform:none}
+  [data-rv-r]{opacity:0;transform:translateX(26px);transition:all .9s ease}
+  [data-rv-r].in{opacity:1;transform:none}
+
+  @media(max-width:900px){
+    header{padding:0 1.2rem;height:66px}
+    nav{display:none}
+    section,.reviews{padding-left:1.4rem;padding-right:1.4rem}
+    .heritage{grid-template-columns:1fr;padding:7rem 0 0}
+    .visit{grid-template-columns:1fr}
+    .gal{column-count:2}
+    .hero h1{font-size:44px}
+    .mitem .d{font-size:11.5px}
+  }
+</style>
+</head>
+<body>
+
+<div id="preload"><img src="assets/logo.png" alt="The Sherwood" /></div>
+
+<header id="nav">
+  <div class="brand"><img src="assets/logo.png" alt="The Sherwood" /><span class="mark">Brantford · Est. 1961</span></div>
+  <nav>
+    <ul>
+      <li><a href="#heritage">Heritage</a></li>
+      <li><a href="#menu">Dining</a></li>
+      <li><a href="#room">The Hall</a></li>
+      <li><a href="#praise">Praise</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+  </nav>
+  <a class="reserve" href="#visit">Make a reservation</a>
+</header>
+
+<main>
+
+  <div class="hero" id="top">
+    <div class="bg"></div><div class="shade"></div>
+    <div class="topline">799 Colborne St E &middot; Brantford &middot; Since 1961</div>
+    <h1>Sixty years of<br />family <em>dining.</em></h1>
+    <p class="sub">Friar Tuck's breakfast. Hot beef with real gravy. Lake Erie perch, Olde-English buffets, and a banquet hall that has hosted Brantford for generations.</p>
+    <div class="acts"><a href="tel:+15197565484">Reserve · 519-756-5484</a><a href="#menu">The menu</a></div>
+    <div class="stats">
+      <div class="st"><b>1961</b><span>Serving since</span></div>
+      <div class="st"><b>364</b><span>Days a year</span></div>
+      <div class="st"><b>2,000</b><span>Banquet guests</span></div>
+      <div class="st"><b>4.8</b><span>Facebook rating</span></div>
+    </div>
+    <div class="hint"></div>
+  </div>
+
+  <section id="heritage">
+    <div class="eyebrow" data-rv><span class="num">01</span> Heritage</div>
+    <h2 class="sec-title" data-rv>A Brantford landmark,<br />one plate at a time.</h2>
+    <div class="heritage">
+      <div class="pic" data-rv-l>
+        <img src="assets/brunch.jpg" alt="The Sherwood dining room" />
+        <div class="stamp"><b>61</b><span>years of family dining</span></div>
+      </div>
+      <div class="prose" data-rv-r>
+        <p class="lead">“Gather your family and friends, and feast on good times.”</p>
+        <p>Since 1961, The Sherwood has served Brantford from the corner of Colborne Street — home-made breakfasts before the morning rush, hot beef and perch for the lunch crowd, Olde-English buffets every weekend afternoon, and a banquet hall that has seen three generations of weddings, anniversaries, and retirement parties.</p>
+        <p>Kitschy by design, family-run by choice, and open 364 days a year because a landmark doesn't close for the week. The kitchen cooks without oil or salt for special dietary needs, keeps gluten-free and dairy-free meals on request, and pours a proper Friar Tuck at the bar.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="menu">
+    <div class="eyebrow" data-rv><span class="num">02</span> Dining</div>
+    <h2 class="sec-title" data-rv>Home-style classics,<br />prices as printed.</h2>
+    <div class="menu-list" data-rv>
+      <div class="mitem">
+        <span class="no">i</span><span class="nm">Friar Tuck's Breakfast</span>
+        <div class="d">the traditional favourite — diced, perched on toasted English muffin or…</div>
+        <span class="pr">$17.99</span><span class="tag">Served all day</span>
+      </div>
+      <div class="mitem">
+        <span class="no">ii</span><span class="nm">Hot Beef Sandwich</span>
+        <div class="d">tender slices of top sirloin, real gravy, fries</div>
+        <span class="pr">$19.95</span><span class="tag">A Sherwood signature</span>
+      </div>
+      <div class="mitem">
+        <span class="no">iii</span><span class="nm">Chicken Parmesan</span>
+        <div class="d">with pasta sauce, parmesan &amp; mozzarella</div>
+        <span class="pr">$21.99</span><span class="tag">Baked to order</span>
+      </div>
+      <div class="mitem">
+        <span class="no">iv</span><span class="nm">Lake Erie Yellow Perch</span>
+        <div class="d">lightly dusted Lake Erie perch — 6, 12 or 24 pieces, scratch-battered</div>
+        <span class="pr">Market</span><span class="tag">The local favourite</span>
+      </div>
+      <div class="mitem">
+        <span class="no">v</span><span class="nm">Banquet Burger</span>
+        <div class="d">half-pound patty, served with fries</div>
+        <span class="pr">$16.95</span><span class="tag">Homemade daily</span>
+      </div>
+      <div class="mitem">
+        <span class="no">vi</span><span class="nm">Olde-English Buffet</span>
+        <div class="d">roast beef, perch &amp; haddock — Friday to Sunday, 4–8 pm</div>
+        <span class="pr">—</span><span class="tag">Weekends only</span>
+      </div>
+    </div>
+    <p class="menu-note" data-rv>Full menus — breakfast, seniors, lunch and takeout — one tap away. The kitchen cooks without oil or salt on request, keeps gluten-free &amp; dairy-free meals on hand, and offers takeout citywide ($5 delivery).</p>
+  </section>
+
+  <section id="room">
+    <div class="eyebrow" data-rv><span class="num">03</span> The hall</div>
+    <h2 class="sec-title" data-rv>Banquets &amp; catering<br />for Brantford's big days.</h2>
+    <div class="gal">
+      <figure data-rv><img src="assets/nottingham.jpg" alt=""><figcaption>The Nottingham Room</figcaption></figure>
+      <figure data-rv><img src="assets/banquets.jpg" alt=""><figcaption>Banquet service</figcaption></figure>
+      <figure data-rv><img src="assets/room-1.jpg" alt=""><figcaption>The dining room</figcaption></figure>
+      <figure data-rv><img src="assets/room-2.jpg" alt=""><figcaption>Private events</figcaption></figure>
+      <figure data-rv><img src="assets/catering.jpg" alt=""><figcaption>Catering &amp; platters</figcaption></figure>
+      <figure data-rv><img src="assets/room-3.jpg" alt=""><figcaption>Serving since '61</figcaption></figure>
+      <figure data-rv><img src="assets/buffets.jpg" alt=""><figcaption>Olde-English buffet</figcaption></figure>
+      <figure data-rv><img src="assets/hot-beef.jpg" alt=""><figcaption>Hot beef dinner</figcaption></figure>
+    </div>
+    <p class="menu-note" data-rv>Wedding ceremonies &amp; receptions, corporate events, and full-service or drop-off catering up to <b>2,000 guests</b> — bartending, wait staff, linens and place settings available. Call <a href="tel:+15197565484" style="color:var(--green)">519-756-5484</a> or write <a href="mailto:banquets@thesherwood.ca" style="color:var(--green)">banquets@thesherwood.ca</a>.</p>
+  </section>
+
+  <div class="reviews" id="praise">
+    <div class="eyebrow" data-rv><span class="num">04</span> Praise</div>
+    <div class="rev-stats" data-rv>
+      <div class="big serif">4.8<span>/5</span></div>
+      <div class="cap">Facebook rating &middot; 96% recommend<br />20+ reviews · Brantford</div>
+    </div>
+    <div class="qrow" data-rv>
+      <blockquote>
+        <p>I've been going to the Sherwood my entire life, not an exaggeration. A diner feel, wonderfully kitschy vibe, good food, reasonable prices. A favorite for sure.</p>
+        <div class="who"><i>★★★★★</i><b>TripAdvisor guest</b>TripAdvisor</div>
+      </blockquote>
+      <blockquote>
+        <p>The Sherwood in Brantford and their buffet food is top notch. We had our wedding ceremony and reception there in 2010 — and we have been back since.</p>
+        <div class="who"><i>★★★★★</i><b>Kim &amp; family</b>Facebook</div>
+      </blockquote>
+      <blockquote>
+        <p>An excellent value for money place to eat. We had a rather large group of friends that decided to get together for lunch and had no reservation.</p>
+        <div class="who"><i>★★★★</i><b>Group of friends</b>TripAdvisor</div>
+      </blockquote>
+      <blockquote>
+        <p>Twelve piece perch dinner, salad bar, friendly staff that remembered us by name. This is why Brantford keeps coming back.</p>
+        <div class="who"><i>★★★★★</i><b>Dining regular</b>Facebook</div>
+      </blockquote>
+    </div>
+    <div class="rev-foot" data-rv>
+      <span class="gg">Loved by Brantford</span>
+      <span style="font:400 12px/1 "Inter";color:var(--muted)">Quotes pulled from the live TripAdvisor &amp; Facebook listings — every word real.</span>
+    </div>
+  </div>
+
+  <section id="visit">
+    <div class="eyebrow" data-rv><span class="num">05</span> Visit</div>
+    <h2 class="sec-title" data-rv">Colborne Street,<br />all day, almost every day.</h2>
+    <div class="visit" data-rv>
+      <div>
+        <div class="vtitle">Hours</div>
+        <ul class="hours">
+          <li>Tuesday – Thursday <span>2–8 pm</span></li>
+          <li>Friday <span>11 am – 8 pm</span></li>
+          <li>Saturday &amp; Sunday <span>9 am – 8 pm</span></li>
+          <li>Monday <span>Closed</span></li>
+          <li style="border-bottom:none;color:var(--green)">Open 364 days a year — Sundays close 8 pm</li>
+        </ul>
+        <div class="vtitle" style="margin-top:2rem">Reservations</div>
+        <p class="vbody">Call or email — we require at least 1 hr for reservations, 24 hrs on holidays.</p>
+        <p class="vbody big" style="margin-top:.6rem"><a href="tel:+15197565484">(519) 756-5484</a><br /><a href="mailto:banquets@thesherwood.ca">banquets@thesherwood.ca</a></p>
+        <p class="vbody" style="margin-top:.8rem">799 Colborne St E<br />Brantford, ON N3S 3S3</p>
+        <p class="vbody" style="margin-top:1.2rem"><a href="https://thesherwood.ca/order-online-2/" target="_blank" rel="noopener">Takeout &amp; delivery — order online</a> ($5 citywide delivery)</p>
+      </div>
+      <div class="mapwrap" data-rv-r>
+        <iframe title="The Sherwood map" loading="lazy" src="https://www.google.com/maps?q=799+Colborne+St+E,+Brantford,+ON+N3S+3S3&output=embed" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="inner">
+    <img src="assets/logo.png" alt="The Sherwood" />
+    <div class="soc">
+      <a href="https://www.facebook.com/p/The-Sherwood-Restaurant-and-Catering-100063936281722/" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://thesherwood.ca/contact/" target="_blank" rel="noopener">Official site</a>
+    </div>
+  </div>
+  <p class="legal">© 2026 The Sherwood Restaurant, Catering &amp; Banquet Hall &middot; 799 Colborne St E, Brantford &middot; <span>Since 1961 — open 364 days a year.</span></p>
+</footer>
+
+<div id="lb"><span class="x" id="lbclose">×</span><img id="lbimg" src="" alt="" /></div>
+
+<script>
+  addEventListener("load", () => setTimeout(() => {
+    const p = document.getElementById("preload");
+    p.style.transition = "opacity .6s"; p.style.opacity = "0";
+    setTimeout(() => p.style.display = "none", 600);
+    document.getElementById("nav").classList.add("on");
+  }, 360));
+
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+  }), { threshold: .14 });
+  document.querySelectorAll("[data-rv],[data-rv-l],[data-rv-r]").forEach(el => io.observe(el));
+
+  let sway = false;
+  addEventListener("scroll", () => {
+    if (scrollY < innerHeight * .85) {
+      document.querySelector(".hero .bg").style.transform = `translateY(${scrollY * .3}px)`;
+    }
+    clearTimeout(sway); sway = setTimeout(() => {}, 16);
+  }, { passive: true });
+
+  const lb = document.getElementById("lb"), lbimg = document.getElementById("lbimg");
+  document.querySelectorAll(".gal figure").forEach(f => f.addEventListener("click", () => {
+    lbimg.src = f.querySelector("img").src; lb.style.display = "flex";
+  }));
+  document.getElementById("lbclose").addEventListener("click", () => lb.style.display = "none");
+  lb.addEventListener("click", () => lb.style.display = "none");
+</script>
+</body>
+</html>
